@@ -1,0 +1,362 @@
+/*
+* app.css
+*
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Nixie+One);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+
+@media screen {
+
+
+	.preload * {
+	  -webkit-transition: none !important;
+	  -moz-transition: none !important;
+	  -ms-transition: none !important;
+	  -o-transition: none !important;
+	}
+
+	html {
+		min-width: 600px;
+	}
+
+	html, body{
+		height: 100%;
+		width: 100%;
+		font-weight: 300;
+		font-size: 10px;
+
+		font-family: 'Lato';
+	}
+
+	h1, h2, h3 {
+	}
+
+	body { 
+		background: #3d7cff;
+		position: relative;
+		padding-top: 50px;
+		/*height: 101%;*/
+	}
+
+	#header_global {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 50px;
+		background: #1d1d1d; /* #5c96ff; */
+		overflow: hidden;
+		z-index: 300;
+
+		-webkit-transition: .5s background ease;
+		transition: .5s background ease;
+	}
+	#header_global h1 {
+		font-size: 4em;
+		font-weight: 100;
+		color: rgba(255,255,255,0.9);
+		padding: 0 2%;
+		float: left;
+	}
+
+	#header_global h2 {
+		float: left;
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 500;
+		letter-spacing: 0.2em;
+		margin-top: 21px;
+		position: relative;
+	}
+
+	#section_content {
+		height: 100%;
+		width: 100%;
+
+		transition: .5s filter ease;
+		-webkit-transition: .5s -webkit-filter ease;
+	}
+
+	#section_content.ohhey {
+		filter: blur(3px);
+		-webkit-filter: blur(3px);
+	}
+
+	#ohhey {
+		overflow: hidden;
+		height: 0px;
+		padding: 0 7%;
+		position: fixed;
+		/*top: 30%;*/
+		background: rgba(255,255,255,0.95);
+		z-index: 250;
+		width: 65%;
+		font-size: 1.6em;
+		box-shadow: 0px 0px 26px rgba(0,0,0,0.3), 0px 0px 77px rgba(0,0,0,0.1);
+
+		transition: .3s height ease, .3s padding ease;
+		-webkit-transition: .3s height ease, .3s padding ease;
+	}
+
+	#dim {
+		background: #1d1d1d;
+		opacity: 0;
+		display: block;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 225;
+		cursor: pointer;
+	}
+
+	#ohhey.open{
+		/*height: 200px;*/
+		padding: 2% 7%;
+		height: auto;
+	}
+
+	#ohhey h2 {
+		font-size: 1.42em;
+	}
+
+	#ohhey .buttons {
+		/*position: absolute;*/
+		/*bottom: 10%;*/
+		height: 50px;
+		/*padding: 16px;*/
+		margin: 46px 0 -10px;
+		font-family: 'Nixie One';
+	}
+
+	#ohhey .buttons a {
+		/*display: block;*/
+		margin-top: 16px;
+		padding: 16px;
+		background: rgba(0,0,0,0.75);
+		color: #fff;
+		text-decoration: none;
+		font-weight: 900;
+		border-radius: 2px;
+
+		transition: .2s background ease;
+		-webkit-transition: .2s background ease;
+	}
+
+	#ohhey .buttons a:hover {
+		background: rgba(61, 124, 255, 1);
+	}
+
+
+	#ohhey .content {
+		margin-top: 20px;
+	}
+
+	#section_users {
+		padding: 2%;
+		width: 65%;
+	}
+
+	#section_users ul {
+		width: 50%;
+		float: left;
+		padding: 2%;
+	}
+
+	#section_users ul.couch {
+		width: 25%;
+		background: url('../images/couch.png') no-repeat center center;
+		background-size: auto 100%;
+
+		-webkit-transition: .5s -webkit-filter ease, .5s opacity ease;
+		transition: .5s filter ease, .5s opacity ease;
+	}
+
+	#section_users ul.couch li {
+		width: 33%;
+		background: none;
+
+		transition: .1s background ease, , .5s transform ease;
+		-webkit-transition: .1s background ease, , .5s -webkit-transform ease;
+	}
+
+	#section_users ul.couch li:after {
+		content: '•';
+		display: block;
+		color: #000;
+		font-size: 4em;
+		margin-top: 22px;
+	}
+
+	#section_users ul.couch.loveseat li {
+		width: 50%;
+	}
+
+	#section_users ul.couch li.active:after {
+		content: '•';
+		display: block;
+		color: #fff;
+		font-size: 4em;
+		margin-top: 22px;
+	}
+
+	#section_users li {
+		width: 50%;
+		float: left;
+		position: relative;
+		padding: 2%;
+		text-align: center;
+		background: url('../images/puter.png') no-repeat center center;
+		background-size: auto 100%; 
+		height: 70px;
+		opacity: 1;
+		cursor: pointer;
+
+		-webkit-transition: .5s -webkit-filter ease, .5s opacity ease, .5s -webkit-transform ease;
+		transition: .5s filter ease, .5s opacity ease, .5s transform ease;
+	}
+
+	#section_users li .name {
+		background: rgba(255,255,255,0.8);
+		width: 65%;
+		margin: 10px auto 0;
+		border-radius: 4px;
+		opacity: 0;
+		color: #1d1d1d;
+		font-size: 1.4em;
+
+		-webkit-transition: .5s opacity ease;
+		transition: .5s opacity ease;
+	}
+
+	#section_users [data-blur="yes"] {
+/*		filter: blur(1px);
+		-webkit-filter: blur(1px);
+*/
+		opacity: 0.5;
+	}
+
+	#section_users .couch li .name {
+		width: auto;
+	}
+
+	#section_users li.active .name {
+		opacity: 1;
+	}
+
+	#section_users .infocus {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+	}
+
+	#section_users ul.couch .infocus:after {
+
+		color: #fcfdfe;
+	}
+
+	#section_users li:hover, #section_users li.active, #section_users .infocus{
+		background-image: url('../images/puter_white.png');
+	}
+
+	#section_content .couch li:hover {
+		background: rgba(255,255,255,0.2);
+	}
+
+	#section_users [data-special='instructor'] {
+		clear: both;
+		display: block;
+		width: 100%;
+		background-position: 31px 0;
+		font-weight: 100;
+		color: #fcfdfe;
+	}
+
+	#section_users [data-special='instructor']:after, #section_users [data-special='shuttle']:after, #section_users [data-special='labby']:after {
+		content: 'Instructor';
+		color: #fcfdfe;
+		font-size: 20px;
+		margin-left: 20px;
+		margin-top: 17px;
+		font-weight: 100;
+		display: block;
+	}
+
+	#section_users [data-special='labby']:after {
+		content: 'Labby';/*
+		color: #fcfdfe;
+		font-size: 20px;
+		margin-left: 20px;
+		margin-top: 17px;
+		font-weight: 100;
+		display: block;*/
+	}
+
+	#section_users [data-special='shuttle']:after {
+		content: 'Space Shuttle';/*
+		color: #fcfdfe;
+		font-size: 20px;
+		margin-left: 20px;
+		margin-top: 17px;
+		font-weight: 100;
+		display: block;*/
+	}
+
+
+
+	#section_users #northWest {
+		top: 70px;
+		position: relative;
+	}
+
+	#section_chat{
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 35%;
+		height: 100%;
+		background: #fcfdfe; /* rgba(255,255,255,0.9); */
+		position: fixed;
+		z-index: 350;
+
+		opacity: .7; /* : rgba(255,255,255,0); */
+-webkit-transition: .5s opacity ease;
+		transition: .5s opacity ease;
+	}
+
+	#section_chat:hover {
+		opacity: 1;
+		/*background: rgba(255,255,255,0.9);*/
+	}
+
+	#section_chat > h2 {
+		top: 0;
+		right: 0;
+		position: fixed;
+		width: 35%;
+		height: 50px;
+		background: rgba(255,255,255,0.6);
+		display: block;
+		text-align: center;
+		line-height: 2.4em;
+		font-size: 2em;
+	}
+
+	#tlkio {
+		height: 100%;
+		width: 100%;
+		margin-top: 50px;
+		background: rgba(255,255,255,0.9);
+		
+	}
+
+	
+
+
+	#templates { 
+		display: none;
+	}
+
+}

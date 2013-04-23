@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html lang="en" class="ie7 nojs"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 nojs"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 nojs"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" class="nojs"><!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+
+		<meta name="viewport" content="width=960">
+
+		<meta property="og:site_name" content="AndyMikulski.com" />
+		<meta property="og:title" content="Andy Mikulski | Interaction Designer + Developer" />
+		<meta property="og:description" content="I’m a creative developer who uses cutting-edge technology with inventive problem-solving to deliver unique and immersive experiences." />
+		<meta property="og:url" content="http://www.andymikulski.com/" />
+		<meta property="og:image" content="http://andymikulski.com/thumbnail.jpg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_US" />
+
+		<title>Andy Mikulski | Interaction Designer + Developer</title>
+
+		<link rel="shortcut icon" href="images/favicon.ico" />
+
+		<script>document.documentElement.className = document.documentElement.className.replace('nojs', '');</script>
+
+		<link rel="stylesheet" href="stylesheets/app/app.css" />
+
+	</head>
+	<body class="loading">
+
+		<script id="work-view-template" type="text/x-handlebars-template">
+		 <div class="viewWork">
+			 <div class="description">
+				 <div class="contain">
+				 	{{{ description }}}
+				 </div>
+			</div>
+			<div class="codeSample hiding" style="background:url('/sublime.jpg">
+					<div class="titleBar">
+						<ul class="buttons">
+							<li class="red"></li>
+							<li class="yellow"></li>
+							<li class="green"></li>
+						</ul>
+						<span class="title">app.css</span>
+					</div>
+
+					<div class="folders">
+						<h2>Folders</h2>
+						<ul>
+							<li class="dir expanded"><span>folder</span>
+								<ul>
+									<li class="dir"><span>css</span>
+										<ul>
+											<li class="file" data-target="tabOne">app.css</li>
+										</ul>
+									</li>
+									<li class="dir expanded"><span>js</span>
+										<ul>
+											<li class="file"  data-target="tabTwo">site.js</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+					<div class="clear"></div>
+					<div class="footer">
+						<span class="lineCol">Line 123, Column 56</span>
+						<span class="fileType">JavaScript</span>
+					</div>
+
+				</div>
+			<div class="contain">
+				<div class="content">
+					<section>
+						<h2>About the project</h2>
+						<div class="contentContainer">{{{ about }}}</div>
+						<div class="clear"></div>
+					</section>
+					{{#if details}}
+						<section>
+							<h2>Details</h2>
+							<div class="contentContainer">
+								{{#each details}}
+									<img src="{{ this.comp }}" class="comp" />
+									<p class="caption">{{ this.caption }}</p>
+								{{/each}}
+							</div>
+							<div class="clear"></div>
+						</section>
+					 {{/if}}
+
+					<section class="postMortem">
+						<h2>{{ prepost }}-Mortem</h2>
+						<div class="contentContainer">{{{ mortem }}}</div>
+						<div class="clear"></div>
+					</section>
+				</div>
+				<div class="sideBar">
+					<ul>
+						<li><h2>Involved with</h2> {{ role }}</li>
+						<li><h2>Timespan</h2> {{ timeline }}</li>
+						<li><h2>Role</h2> {{ duty }}</li>
+					</ul>
+					<hr />
+					<ul class="tech">
+						<li><h2>Tech Used</h2></li>
+						{{#each tech}}
+							<li data-hover="{{ this.hover }}">{{ this.short }}</li>
+						{{/each}}
+					</ul>
+				</div>
+				<div class="clear"></div>
+				
+				<div class="clear"></div>
+			</div>
+		 </div> 
+				
+		</script>
+
+
+		<script id="work-template" type="text/x-handlebars-template">
+		<div class="work" data-id="{{id}}">
+			<div class="titleCard">
+				{{{titleImage}}}
+			</div>
+			<div class="info">
+				<div class="contain">
+					<div class="nameRole">
+						<span class="title">{{title}}</span>
+						<span class="type">{{type}}</span> <span class="role">({{role}})</span>
+					</div>
+					<div class="seeMore">
+						<a href="#" class="button">See More</a>
+					</div>
+				</div>
+			</div>
+			<div class="thumbs contain">
+				<li class="one inactive">
+					{{{image3}}}
+				</li>
+				<li class="two active">
+					{{{image1}}}
+				</li>
+				<li class="three inactive">
+					{{{image2}}}
+				</li>
+			</div>
+		</div>
+		</script>
+
+
+		<div id="section_main">
+			<noscript>
+				<p>Javascript is currently disabled. Please <a href="http://www.google.com/support/bin/answer.py?answer=23852" target="_blank">enable javascript</a> for the optimal experience!</p>
+			</noscript>
+			<div id="splash" class="wellhello contain">
+				<div class="conversation">
+					<h1 id="imandy">
+						Oh hey. I'm <span class="name"><span class="first br">Andy</span> <span class="last">Mikulski.</span></span>
+					</h1>
+					<h2 id="howareyou">
+						I’m a <strong>creative developer</strong> who uses cutting-edge technology with inventive problem-solving to deliver unique and immersive experiences.</h2>
+					</h2>
+					<p id="thatsgood">
+						Front-end web development is my jam. I make neat things with Javascript that focus on creating engaging user experiences.
+					</p>
+
+					
+					<div class="clear"></div>
+				</div>
+				<ul class="nav">
+					<li class="button linkedin"><a href="http://www.linkedin.com/pub/andy-mikulski/17/a93/684" target="_blank">Connect on LinkedIn</a></li>
+					<li class="button contactMe"><a href="#">Contact Me</a></li>
+					<li class="button"><a href="AndyMikulski_Resume.pdf" target="_blank">View Resumé</a></li>
+					<li class="button portfolio"><a href="#portfolio">Portfolio</a></li>
+					<noscript><li style="clear:both; display: block;">Sorry, but in order to view my portfolio, you'll need to <a href="http://www.google.com/support/bin/answer.py?answer=23852" target="_blank">enable javascript</a>.</li></noscript>
+				</ul>
+
+				
+			</div>
+			<div id="header_global">
+				<div class="contain">
+					<div class="credentials">
+						<span class="name">Andy Mikulski</span>
+						<span class="title">Interaction Designer + Developer</span>
+					</div>
+					<div class="links">
+						<a href="tel:+17165155643" class="call">Call</a>
+						<a href="mailto:andy.mikulski@gmail.com" class="email">Email</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="portfolio">
+			</div>
+
+			<div id="footer_global">
+				<div class="contain">
+					<ul class="nav col-3">
+						<li class="button reverse"><a>My Stuff</a></li>
+						<li class="button linkedin"><a href="http://www.linkedin.com/pub/andy-mikulski/17/a93/684" target="_blank">LinkedIn</a></li>
+						<li class="button"><a href="AndyMikulski_Resume.pdf" target="_blank">View Resumé</a></li>
+						<li class="button hideme"><a href="#">&nbsp;</a></li>
+						<li class="button hideme"><a href="#">&nbsp;</a></li>
+						<li class="button hideme"><a href="#">&nbsp;</a></li>
+						<li class="button red backtotop"><a href="#portfolio">Back to Top</a></li>
+						<div class="clear"></div>
+					</ul>
+					<ul class="nav col-3 pieces">
+						<li class="button reverse"><a>Projects</a></li>
+						<li class="button"><a href="#twig">Twig</a></li>
+						<li class="button"><a href="#pawprints">Pawprints</a></li>
+						<li class="button"><a href="#indalab">InDaLab</a></li>
+						<li class="button"><a href="#lowhangingfruit">Low-Hanging Fruit</a></li>
+						<li class="button"><a href="#hivemind">HiveMind</a></li>
+						<li class="button"><a href="#postsecret">RIT Post Secret</a></li>
+						<div class="clear"></div>
+					</ul>
+					<ul class="nav col-3">
+						<li class="button reverse"><a>Contact Me</a></li>
+						<li class="button reverse"><a>T: 716 - 515 - 5643</a></li>
+						<li class="button reverse"><a>E: andy.mikulski@gmail.com</a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<link rel="stylesheet" href="stylesheets/plugins/animate.css" />
+		<link rel="stylesheet" href="stylesheets/plugins/highlight.default.min.css">
+		<link rel="stylesheet" href="stylesheets/plugins/monokai.css">
+
+		<script defer src="javascripts/plugins/plugins.min.js"></script>
+		<script defer src="javascripts/lib/walt.min.js"></script>
+		<script defer src="javascripts/app/site.js"></script>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-16821714-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+
+
+	</body>
+</html>
