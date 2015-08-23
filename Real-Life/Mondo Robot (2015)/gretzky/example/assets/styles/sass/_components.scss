@@ -1,0 +1,374 @@
+
+//
+// Switch
+//
+[data-widget*="switch"] {
+  @extend %no-select;
+  cursor: pointer;
+
+  &.is-active {
+    background: rgba(#f00, 0.2);
+  }
+}
+
+//
+// Dropdown
+//
+[data-widget*="dropdown"] {
+  display: block;
+  left: -1px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+
+  select {
+    display: none;
+  }
+
+  [data-widget="switch"] {
+    @include transition(0.2s color ease, 0.2s box-shadow ease, 0.2s background ease);
+
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px $really_light_gray;
+    color: $gray;
+    padding: 0.4em 1.2em 0.2em;
+    font-size: 0.95em;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+
+    &.is-active {
+      background: $off_white;
+      box-shadow: 0 0 0 2px $dark_gray;
+
+      & + [data-content] {
+
+      }
+    }
+
+    &:hover, &:focus, &.is-active {
+      color: $dark_gray;
+    }
+  }
+
+  &.is-dirty {
+    [data-widget="switch"] {
+      color: $red;
+
+      &.is-active {
+        color: $dark_gray;
+      }
+    }
+  }
+
+  [data-content] {
+    color: $dark_gray;
+    background: $white;
+    box-shadow: 0px 5px 12px rgba($black, 0.3);
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    border-radius: 0px 0px 3px 3px;
+    border: 2px solid $really_light_gray;
+    border-top: none;
+    color: $really_light_gray;
+    font-size: 0.95em;
+    font-weight: 700;
+    height: 255px;
+    letter-spacing: 0.03em;
+    margin-top: 2px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 0.4em 0 0.2em;
+    width: 100%;
+    z-index: 10;
+
+    -webkit-overflow-scrolling: touch;
+
+    & > [data-list] {
+      @extend %circe;
+      padding: 0;
+
+      li {
+        @include transition(0.5s background linear, 0.5s color linear);
+        @extend %no-select;
+
+        color: $dark_gray;
+        cursor: pointer;
+        list-style: none;
+        margin: 0;
+        padding: 0.5em 1.2em;
+        background: transparent;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover, &:focus {
+          @include transition(0.1s background ease, 0.1s color ease);
+          background: $off_white;
+          color: $near_black;
+        }
+      }
+    }
+  }
+}
+
+
+
+//
+// Input field
+//
+[data-widget*="input"] {
+  @include transition(0.2s border-color ease);
+
+  border-radius: 3px;
+  background: $even_lighter_gray;
+  border: none;
+  box-shadow: none;
+  color: $gray;
+  font-weight: 700;
+
+  width: 95%;
+  margin: 0 auto;
+  display: block;
+  padding: 0.4em 1.2em 0.2em;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &.is-valid {
+    border-color: green !important;
+  }
+
+  &.is-invalid {
+    border-color: red !important;
+  }
+
+  @include placeholder-style {
+    @include transition(0.15s opacity ease, 0.25s outline ease);
+  }
+
+  &:focus {
+    @include placeholder-style {
+      opacity: 0.5;
+    }
+
+    outline: none;//1px solid mix($red, $white, 50%);
+  }
+
+  &.is-invert {
+    background: $muddy_red;
+    color: $white;
+
+    @include placeholder-style {
+      color: $white;
+    }
+
+    // &:focus {
+      // outline: 1px solid $white;
+      // outline: 1px solid mix($red, $white, 50%);
+    // }
+  }
+}
+
+//
+// Sticky header
+//
+[data-widget*="sticky"] {
+  &.is-clone {
+    display: none;
+
+    &.is-stuck {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      visibility: visible;
+    }
+  }
+
+  &.is-stuck {
+    visibility: hidden;
+  }
+}
+
+//
+// Modal
+//
+[data-widget*="modal"] {
+  [data-content]{
+    display: none;
+  }
+}
+
+.modal {
+  @include transition(0s visibility linear 0.3s);
+  visibility: hidden;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 10;
+
+  &.is-visible {
+    @include transition(0s visibility linear);
+    pointer-events: auto;
+    visibility: visible;
+
+    .modal-close,
+    .modal-content,
+    .dim {
+      opacity: 1;
+    }
+
+    .modal-content {
+      @include transform(translateY(-50%) translateX(-50%));
+
+      -webkit-transition: 0.3s opacity ease 0.1s, 0.35s -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.15s;
+      -moz-transition: 0.3s opacity ease 0.1s, 0.35s -moz-transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.15s;
+      transition: 0.3s opacity ease 0.1s, 0.35s transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.15s;
+    }
+  }
+
+  .dim {
+    @include transition(0.3s opacity ease);
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba($black, 0.85);
+    z-index: 2;
+    cursor: pointer;
+
+    opacity: 0;
+  }
+
+  .modal-close {
+    @include transition(0.3s opacity ease);
+    opacity: 0;
+
+    position: absolute;
+    right: 2vw;
+    top: 2vw;
+    display: block;
+    z-index: 3;
+  }
+  .modal-content {
+    -webkit-transition: 0.2s opacity ease, 0.35s -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-transition: 0.2s opacity ease, 0.35s -moz-transform cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: 0.2s opacity ease, 0.35s transform cubic-bezier(0.215, 0.61, 0.355, 1);
+    @include transform(translateY(0%) translateX(-50%));
+
+    background: $white;
+    display: inline-block;
+    opacity: 0;
+    left: 50%;
+    max-height: 100%;
+    max-width: 90%;
+    min-width: 50vw;
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+  }
+}
+
+//
+// Carousel
+//
+
+[data-widget*="carousel"] {
+  position: relative;
+  width: 100%;
+
+  .carousel-nav {}
+  .carousel-indicators {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    z-index: 15;
+  }
+  .carousel-dot {
+    background: $black;
+    border-radius: 100%;
+    display: inline-block;
+    height: 6px;
+    margin: 0 2px;
+    width: 6px;
+    &.is-active {
+      background: $white;
+      border: 1px solid $black;
+    }
+  }
+
+  .carousel-list {
+    position: relative;
+
+    & > li {
+      list-style: none;
+      display: inline-block;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+
+  &.is-fluid {
+    .carousel-indicators {
+      display: none;
+    }
+    .carousel-wrapper {
+      -webkit-overflow-scrolling: touch;
+      overflow-y: hidden;
+      overflow-x: auto;
+      width: 100%;
+    }
+  }
+
+  &.is-fixed {
+    .carousel-wrapper {
+      overflow: hidden;
+    }
+
+    .carousel-list {
+      & > li {
+        background: $white;
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        display: none;
+
+        &.is-active {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+//
+// Mixins and extensions
+//
+%no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%generic-label {
+  color: $red;
+  cursor: pointer;
+  font-size: 0.85em;
+  left: -0.125em;
+  position: relative;
+  top: -0.15em;
+}
+
+
+@mixin placeholder-style(){
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}

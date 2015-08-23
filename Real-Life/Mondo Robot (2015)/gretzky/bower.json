@@ -1,0 +1,31 @@
+{
+  "name": "gretzky",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mondorobot/gretzky",
+  "main": ["base.js, factory.js"],
+  "authors": [
+    "Andy Mikulski <andy@mondorobot.com>"
+  ],
+  "description": "The Great One by Mondo Robot",
+  "keywords": [
+    "mondorobot",
+    "mondo",
+    "robot",
+    "gretzky",
+    "thegreatone",
+    "gretzkyjs",
+    "thegreatonejs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "~1.11.4",
+    "jquery": "1.11.0"
+  }
+}

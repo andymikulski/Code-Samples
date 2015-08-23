@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>WaltJS Test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/animate.css">
+    </head>
+    <body>
+
+        <section class="main">
+            <div id="test1">This is one object</div>
+            <div id="test2">This is another object <div>this is nested</div></div>
+            <ul id="test3">
+                This section has custom easing
+                <li>These are children</li>
+                <li>These are children</li>
+                <li>These are children</li>
+                <li>These are children</li>
+            </ul>
+
+            <ul id="test4">
+                <li>This is a child</li>
+                <li>This is a child</li>
+                <li>This is a child</li>
+                <li>This is a child</li>
+            </ul>
+
+            <div id="test5">Old and busted</div>
+            <div id="test6">New hotness</div>
+            
+
+
+            <div id="test7">One element, multiple animations!</div>
+
+
+
+        </section>
+
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../bower_components/async/lib/async.js"></script>
+        <script src="../walt.js"></script>
+
+        <script>
+            var superCoolFade = new Walt()
+              .name('fadeInUp')
+              .duration(250)
+              .delay(1000)
+              .target('#test1');
+
+            // we can fork the base animation and alter that instance
+            // so we fork and have an animation with 250 duration and 1000 delay targeting #test1
+            // (and whatever the defaults are for the other options)
+            superCoolFade
+                .fork()
+                .target('#test2')
+                // we still ahve the 1000 delay here,
+                // but we can override other options
+                .duration(5000)
+                .animate();
+
+            // targeting children but with the same animation definition
+            superCoolFade
+                .fork()
+                .target('#test3')
+                .name('fadeInUp')
+                .duration(2500)
+            // timings are provided right on the Walt object
+                .timing(Walt.ease.inOut.quint);
+
+
+            // set up the animation for our kids...
+            var childAnim = new Walt()
+                .name('fadeInLeft')
+                .duration(2000)
+                .timing(Walt.ease.inOut.back);
+
+            // you can retrieve values by not passing parameters
+            superCoolFade
+                .target() // get the target in jQuery form
+                .children() // now a jQuery operation
+                .each(function(i,el){ // still jquery
+                    // use the child anim here
+                    childAnim.fork().target(el).delay((i+1) * 250).animate();
+                });
+
+            // ..oh and animations only start when you want them to
+            superCoolFade.animate();
+            // keep in mind this only triggers our inital animation;
+            // forked instances need to be triggered separately
+
+
+
+            // now featuring Walt 1.x support!
+
+            // old n busted
+            Walt.animate({
+                'el': $('#test5'),
+                'animation': 'fadeInDown',
+                'duration': '500ms',
+                'delay': '250ms'
+            });
+
+            // newHotness
+            var newHotness = new Walt()
+                .target('#test6')
+                .name('fadeInDown')
+                .duration(500)
+                .delay(250)
+                .animate();
+
+
+            // Composing animations on the fly is ez-pz
+            var ourMergedAnimation = new Walt()
+                // using `compose`, we can merge existing keyframed animations
+                // in order to play multiple animations on one element at a time
+                .compose('yourCoolAnimation', 'fadeIn rubberBand')
+                .count('infinite')
+                .direction('alternate')
+                .duration(5000)
+                .target('#test7')
+                .animate();
+
+            // Want to see what the keyframes look like? easy!
+            console && console.log('Your cool generated animation:', Walt.getKeyframes('yourCoolAnimation'));
+
+        </script>
+    </body>
+</html>

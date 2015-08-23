@@ -1,7 +1,11 @@
-Andy Mikulski's Sample Code
-============
+Andy Mikulski Sample Code
+===
 
-Here you can find some samples of projects I have on my portfolio!
+In this repo, you'll find various samples of code from projects I've worked on both professionally and in my spare time.
 
-If you have any questions, comments, or suggestions, please feel free to contact me at:
-andy.mikulski@gmail.com
+Notable entries:
+- Firstborn.com
+- Walt
+- Gretzky
+
+Questions, comments, concerns? Contact me at [andy.mikulski@gmail.com](andy.mikulski@gmail.com).

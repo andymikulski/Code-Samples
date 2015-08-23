@@ -1,0 +1,868 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>mondorobot/gretzky Example Components</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="js/lib/html5shiv.js"><\/script>')</script>
+<![endif]-->
+
+    <link href="assets/styles/css/main.css" rel="stylesheet">
+</head>
+<body>
+
+    <section class="components">
+
+        <div style="height: 15vh"></div>
+        <div class="row">
+            <div class="small-12 columns">
+                <h2>Gretzky Example Components</h2>
+                <div style="margin-bottom: 1em"><p style="font-size: 1.25em; display: block; margin-bottom: 1em;">This is a page consisting of various pre-built gretzky components using simple markup/styling to demonstrate just how the widgets can work together.</p> Viewing the widget sources and various code snippets below will show you how primitive modules can be built up into larger functioning widgets.</div>
+                <div style="margin-bottom: 5em">
+                    <p>Combined functionality stems from the use of events between parent/children widgets. Take note of the various events each component actively emits or listens for by default - a clean event API is key to an easily-maintainable widget.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <h3 data-widget="sticky" class="header-element">Sticky Header</h3> -->
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Switch</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Simple component that holds an on/off state.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>active</strong> <i>(boolean)</i><br /> Switch active on init (default: false)</li>
+                    <li><strong>class</strong> <i>(string)</i><br /> Class to apply while active (default: 'is-active')</li>
+                    <li><strong>on</strong> <i>(string)</i><br /> String to replace inside switch when active (default: null)</li>
+                    <li><strong>off</strong> <i>(string)</i><br /> String to replace inside switch when disabled (default: null)</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div data-widget="switch" data-active="true" data-on="Switch (Enabled)" data-off="Switch (Disabled)">Switch</div>
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">&lt;div data-widget="switch" data-active="true" data-on="Switch (Enabled)" data-off="Switch (Disabled)"&gt;Switch&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li><strong>switch:was-changed</strong><br /> Switch state has been updated (but not necessarily changed)</li>
+                            <li><strong>switch:is-enabled</strong><br /> Switch state has been set to 'enabled'</li>
+                            <li><strong>switch:is-disabled</strong><br /> Switch state has been set to 'disabled'</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul>
+                            <li><strong>switch:enable()</strong><br /> Sets the switch state to 'enabled'</li>
+                            <li><strong>switch:disable()</strong><br /> Sets the switch state to 'disabled'</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Toggle</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Stores and manages the state of two or more Switch components.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>maxActive</strong> <i>(number)</i><br /> Max switches active at one time (default: 1)</li>
+                    <li><strong>allowEmpty</strong> <i>(boolean)</i><br /> Allow state in which all switches can be disabled (default: false)</li>
+                    <li><strong>hasDefault</strong> <i>(boolean)</i><br /> Denotes if an option should be the default option (e.g. for 'all' filters) (default: null)</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                    <div class="cap-header">Two Options, Require 1</div>
+                    <div class="row" data-widget="toggle">
+                        <div class="small-6 columns" data-widget="switch" data-active="true">Switch 1</div>
+                        <div class="small-6 columns" data-widget="switch">Switch 2</div>
+                    </div>
+                    <div class="cap-header" style="margin-top: 2em">Multiple Options, Require 1, Limit 2</div>
+                    <div class="row" data-widget="toggle" data-max-active="2">
+                        <div class="small-3 columns" data-widget="switch" data-active="true">Switch 1</div>
+                        <div class="small-3 columns" data-widget="switch">Switch 2</div>
+                        <div class="small-3 columns" data-widget="switch">Switch 3</div>
+                        <div class="small-3 columns" data-widget="switch">Switch 4</div>
+                    </div>
+                    <div class="cap-header" style="margin-top: 2em">Multiple Options, Default, Limit 3</div>
+                    <div class="row" data-widget="toggle" data-max-active="3" data-allow-empty="false" data-has-default="true">
+                        <div class="small-3 columns" data-widget="switch" data-active="true" data-default="true">Switch 1</div>
+                        <div class="small-3 columns" data-widget="switch">Switch 2</div>
+                        <div class="small-3 columns" data-widget="switch">Switch 3</div>
+                        <div class="small-3 columns" data-widget="switch">Switch 4</div>
+                    </div>
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;div data-widget="toggle"&gt;
+    &lt;div data-widget="switch" data-active="true"&gt;Switch 1&lt;/div&gt;
+    &lt;div data-widget="switch"&gt;Switch 2&lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li><strong>toggle:was-changed</strong><br /> Toggle's switch status has changed</li>
+                            <li><strong>toggle:is-empty</strong><br /> Toggle has zero active switches</li>
+                            <li><strong>toggle:is-full</strong><br /> Toggle has reached max active switches</li>
+                            <li><strong>toggle:is-not-empty</strong><br /> Toggle has between zero and max active switches</li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Accordion</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Hides/displays a section of content based on an 'active' Switch state.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>active</strong> <i>(boolean)</i><br /> Open the accordion on init (default: false)</li>
+                    <li><strong>animIn</strong> <i>(string)</i><br /> Animation name to play when accordion opens (default: 'fadeInUp')</li>
+                    <li><strong>animOut</strong> <i>(string)</i><br /> Animation name to play when accordion closes (default: 'fadeOutDown')</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div data-widget="accordion">
+                    <div data-widget="switch" data-off="Expand" data-on="Collapse"></div>
+                    <div data-content>This is where your content would go!</div>
+                </div>
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;div data-widget="accordion"&gt;
+    &lt;div data-widget="switch" data-off="Expand" data-on="Collapse"&gt;&lt;/div&gt;
+    &lt;div data-content&gt;This is where your content would go!&lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul></ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul>
+                            <li><strong>accordion:close()</strong><br /> Closes the accordion</li>
+                            <li><strong>accordion:open()</strong><br /> Opens the accordion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Tabs</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Hides/displays multiple sections of content based on a toggle state.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>index</strong> <i>(number)</i><br /> Index of slide to open on init (default: 0)</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div data-widget="tabs">
+                    <div class="row" data-widget="toggle">
+                        <div class="small-3 columns" data-widget="switch" data-active="true">Tab One</div>
+                        <div class="small-3 columns" data-widget="switch">Tab Two</div>
+                        <div class="small-3 columns" data-widget="switch">Tab Three</div>
+                        <div class="small-3 columns" data-widget="switch">Tab Four</div>
+                    </div>
+                    <div data-content>This is the first tab</div>
+                    <div data-content>This is the second tab</div>
+                    <div data-content>This is the third tab</div>
+                    <div data-content>This is the fourth tab</div>
+                </div>
+                <div class="cap-header" style="margin: 2em 0 1em">Default to 2nd tab</div>
+                <div data-widget="tabs" data-index="1">
+                    <div class="row" data-widget="toggle">
+                        <div class="small-3 columns" data-widget="switch">Tab One</div>
+                        <div class="small-3 columns" data-widget="switch" data-active="true">Tab Two</div>
+                        <div class="small-3 columns" data-widget="switch">Tab Three</div>
+                        <div class="small-3 columns" data-widget="switch">Tab Four</div>
+                    </div>
+                    <div data-content>This is the first tab</div>
+                    <div data-content>This is the second tab</div>
+                    <div data-content>This is the third tab</div>
+                    <div data-content>This is the fourth tab</div>
+                </div>
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;div data-widget="tabs"&gt;
+    &lt;div data-widget="toggle"&gt;
+        &lt;div data-widget="switch" data-active="true"&gt;Tab One&lt;/div&gt;
+        &lt;div data-widget="switch"&gt;Tab Two&lt;/div&gt;
+        &lt;div data-widget="switch"&gt;Tab Three&lt;/div&gt;
+        &lt;div data-widget="switch"&gt;Tab Four&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div data-content&gt;This is the first tab&lt;/div&gt;
+    &lt;div data-content&gt;This is the second tab&lt;/div&gt;
+    &lt;div data-content&gt;This is the third tab&lt;/div&gt;
+    &lt;div data-content&gt;This is the fourth tab&lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>tabs:change</strong><br />Active tab has changed (index of tab is passed with event)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Dropdown Menu</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Toggles panel to show/hide out of layout (it does <i>not</i> effect surrounding elements).<br /><br />Two modes are available:</p>
+                <ul>
+                    <li><strong>select</strong><br />Native-esque list menu. Provides fallback to native select menu.</li>
+                    <li><strong>content</strong> <i>(default)</i><br />An element is displayed in the content area of the menu.</li>
+                </ul>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>type</strong> <i>(string)</i><br /> Menu behavior ('select', 'content' | default: 'content')</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div class="cap-header" style="margin: 2em 0 1em">List</div>
+                        <div class="small-12 large-6">
+                            <div data-widget="accordion dropdown" data-type="select">
+                                <select name="select">
+                                  <option value="value1" selected>Value 1</option>
+                                  <option value="value2">Value 2</option>
+                                  <option value="value3">Value 3</option>
+                                  <option value="value4">Value 4</option>
+                                  <option value="value5">Value 5</option>
+                                  <option value="value6">Value 6</option>
+                                  <option value="value7">Value 7</option>
+                                  <option value="value8">Value 8</option>
+                                </select>
+                                <div data-widget="switch" data-class="is-active">Please Select</div>
+                                <div data-content>
+                                    <ul data-list></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cap-header" style="margin: 2em 0 1em">Content</div>
+                        <div class="small-12 large-6">
+                            <div data-widget="accordion dropdown">
+                                <div data-widget="switch" data-class="is-active">Toggle dropdown</div>
+                                <div data-content>
+                                    This is the dropdown menu content!
+                                    <img src="http://p-hold.com/500/500" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;!-- List --&gt;
+&lt;div data-widget="accordion dropdown" data-type="select"&gt;
+    &lt;select name="your_element_name"&gt;
+      &lt;option value="value1" selected&gt;Value 1&lt;/option&gt;
+      &lt;option value="value2"&gt;Value 2&lt;/option&gt;
+      &lt;option value="value3"&gt;Value 3&lt;/option&gt;
+      &lt;option value="value4"&gt;Value 4&lt;/option&gt;
+      &lt;option value="value5"&gt;Value 5&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div data-widget="switch"&gt;Please Select&lt;/div&gt;
+    &lt;div data-content&gt;
+        &lt;ul data-list&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Content --&gt;
+&lt;div data-widget="accordion dropdown"&gt;
+    &lt;div data-widget="switch"&gt;Toggle dropdown&lt;/div&gt;
+    &lt;div data-content&gt;
+        This is the dropdown menu content!
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>dropdown:select</strong><br /><i>Select style</i> - A value was selected.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Input</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Wrapper for the standard text input fields (text, password, etc). Provides validation with AOT configurations.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>type</strong> <i>(string)</i><br /> Validation set to run on field (default: 'all')</li>
+                    <li><strong>valid</strong> <i>(string)</i><br /> Class applied when field is valid (default: 'content')</li>
+                    <li><strong>invalid</strong> <i>(string)</i><br /> Class applied when field is invalid (default: 'is-invalid')</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example <small style="margin-left: 1em;">(Check the console)</small></div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 columns">
+                        <form>
+                            <fieldset>
+                                <div class="row" style="margin-bottom: 1em;">
+                                    <label class="small-12 large-6 columns" for="name">Min 3 Max 8</label>
+                                    <div class="small-12 large-6 columns">
+                                        <input id="name" type="text" placeholder="Username" data-widget="input" data-type="length">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 1em;">
+                                    <label class="small-12 large-6 columns" for="password">Min 3 Max 8</label>
+                                    <div class="small-12 large-6 columns">
+                                        <input id="password" type="password" placeholder="Password" data-widget="input" data-type="length">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 1em;">
+                                    <label class="small-12 large-6 columns" for="email">Email Address</label>
+                                    <div class="small-12 large-6 columns">
+                                        <input id="email" class="is-invert" type="email" placeholder="Email Address" data-widget="input" data-type="email">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 1em;">
+                                    <label class="small-12 large-6 columns" for="foo">Phone number</label>
+                                    <div class="small-12 large-6 columns">
+                                        <input id="foo" class="is-invert" type="text" placeholder="Enter number here..." data-widget="input" data-type="phone">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">&lt;input type="text" name="username" placeholder="Username" data-widget="input" data-type="length"&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>input:validChange</strong><br />The 'valid' state of the field has changed.
+                            </li>
+                            <li>
+                                <strong>input:valid</strong><br />The field value has been successfully validated.
+                            </li>
+                            <li>
+                                <strong>input:invalid</strong><br />The field value has failed validation.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Digits</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Wrapper for displayed numerical values on the site. Simply animates from 0 to the target number. On hover, the animation will spin up again (if not already animating).</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>speed</strong> <i>(number)</i><br /> Speed of animation, ranged 2 - 100 (default: 25)</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <h1 data-widget="digits" data-speed="10">100</h1>
+                        <h2 data-widget="digits" data-speed="25">100</h2>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <h3 data-widget="digits" data-speed="50">100</h3>
+                        <h4 data-widget="digits" data-speed="100">100</h4>
+                    </div>
+                    <div class="small-12 columns">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing <span data-widget="digits" data-speed="45">100</span> elit. Pellentesque ut lorem nec mi euismod <span data-widget="digits" data-speed="60">100</span> posuere. Phasellus quis massa viverra <span data-widget="digits" data-speed="25">100</span>, pulvinar ex pellentesque, tincidunt urna.
+                    </div>
+                </div>
+
+
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">&lt;span data-widget="digits" data-speed="50"&gt;100&lt;/span&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>digits:has-started</strong><br />The digit animation has started.
+                                <strong>digits:has-ended</strong><br />The digit animation has ended.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul>
+                            <li>
+                                <strong>digits:start()</strong><br />Reset the displayed value to 0 and begin the animation.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+<!-- Modals currently disabled -->
+<!--         <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Modal</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Creates an instantiable modal from a content element, bound to a trigger element. Trigger element can be set to open, close, or toggle a modal.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>template</strong> <i>(string)</i><br /> Name of template to use when creating modal (default: 'modal')</li>
+                    <li><strong>class</strong> <i>(string)</i><br /> Class applied when modal is visible (default: 'is-visible')</li>
+                    <li><strong>trigger</strong> <i>(string)</i><br /> <i>Trigger Element only</i> - Behavior trigger should take on ('open', 'close', 'toggle' | default: 'toggle')</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div data-widget="modal">
+                            <a href="#" data-trigger="toggle">Toggle Modal</a>
+                            <a href="#" data-trigger="open">Open Modal</a>
+                            <a href="#" data-trigger="close">Close Modal</a>
+                            <div data-content>
+                                <div class="row">
+                                    <div class="small-12 large-6 columns">
+                                        This is where the modal content goes! Other widgets can go in here and everything.
+                                    </div>
+                                    <div class="small-12 large-6 columns">
+                                        <img src="http://placekitten.com/g/700/700" style="padding: 10%" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;div data-widget="modal"&gt;
+    &lt;a href="#" data-trigger="toggle"&gt;Toggle Modal&lt;/a&gt;
+    &lt;div data-content&gt;
+        This is the modal content!
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>modal:has-opened</strong><br />The modal has been displayed.
+                                <strong>modal:has-closed</strong><br />The modal has been hidden.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul>
+                            <li>
+                                <strong>modal:open()</strong><br />Open the modal (if not already open).
+                            </li>
+                            <li>
+                                <strong>modal:close()</strong><br />Close the modal (if already open).
+                            </li>
+                            <li>
+                                <strong>modal:toggle()</strong><br />Open/close the modal depending on current visibility.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+ -->
+
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Carousel</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Cycles through panels of content. If an image is found, the carousel will adjust height after iamge has loaded.</p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>navPadding</strong> <i>(number)</i><br /> Height (in px) to add to bottom of carousel to fit pagination (default: 25)</li>
+                    <li><strong>speed</strong> <i>(string)</i><br /> Speed of slide change animation (default: '250ms')</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div data-widget="carouselFixed">
+                            <div class="carousel-nav">
+                                <a href="#" class="carousel-nav__button prev">Prev</a>
+                                <a href="#" class="carousel-nav__button next">Next</a>
+                            </div>
+                            <div class="carousel-indicators"></div>
+                            <div class="carousel-wrapper">
+                                <ul class="carousel-list">
+                                    <li><img src="http://placekitten.com/g/500/500" /></li>
+                                    <li><img src="http://placekitten.com/g/250/700" /></li>
+                                    <li><img src="http://placekitten.com/g/500/700" /></li>
+                                    <li><img src="http://placekitten.com/g/300/500" /></li>
+                                    <li><img src="http://placekitten.com/g/800/300" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;div data-widget="carouselFixed"&gt;
+    &lt;div class="carousel-nav"&gt;
+        &lt;a href="#" class="carousel-nav__button prev"&gt;Prev&lt;/a&gt;
+        &lt;a href="#" class="carousel-nav__button next"&gt;Next&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="carousel-indicators"&gt;&lt;/div&gt;
+    &lt;div class="carousel-wrapper"&gt;
+        &lt;ul class="carousel-list"&gt;
+            &lt;li&gt;Slide 1 Content&lt;/li&gt;
+            &lt;li&gt;Slide 2 Content&lt;/li&gt;
+            &lt;li&gt;Slide 3 Content&lt;/li&gt;
+            &lt;li&gt;Slide 4 Content&lt;/li&gt;
+            &lt;li&gt;Slide 5 Content&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>carousel:has-changed</strong><br />The carousel slide has transitioned to a new panel.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row style-example">
+            <div class="small-12 columns">
+                <h3>Sifter</h3>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Description</div>
+                <hr />
+                <p class="style-desc">Hides/displays content based on various filter inputs.<br /><br />Two styles of filters are available: additive and non-additive. Non-additive is default and will return all items for the selected filters. Additive combines filters and returns items matching EXACTLY those filter specifications. <i>For example, select 'luxury' and 'kids' in the various examples to see the difference.</i></p>
+                <div class="cap-header">Options</div>
+                <hr />
+                <ul>
+                    <li><strong>additive</strong> <i>(boolean)</i><br /> When true, only items matching the filters exactly are returned (default: false)</li>
+                </ul>
+            </div>
+            <div class="small-12 large-6 columns">
+                <div class="cap-header">Working Example</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div class="cap-header" style="margin-bottom: 1em;">Filter (Single)</div>
+                        <div data-widget="sifter">
+                            <div data-controls data-widget="toggle" data-allow-empty="false" data-has-default="true">
+                                <a href="#" data-widget="switch" data-type="all" data-default="true" data-active="true">All</a>
+                                <a href="#" data-widget="switch" data-type="luxury">Luxury</a>
+                                <a href="#" data-widget="switch" data-type="onmountain">On Mountain</a>
+                                <a href="#" data-widget="switch" data-type="adventure">Adventure</a>
+                                <a href="#" data-widget="switch" data-type="kids">Kids</a>
+                                <a href="#" data-widget="switch" data-type="valley">Valley</a>
+                                <a href="#" data-widget="switch" data-type="free">Free</a>
+                                <a href="#" data-widget="switch" data-type="family">Family Certified</a>
+                            </div>
+                            <div data-content>
+                                <div data-item data-type="luxury kids">luxury kids</div>
+                                <div data-item data-type="luxury">luxury</div>
+                                <div data-item data-type="kids">kids</div>
+                                <div data-item data-type="valley">valley</div>
+                                <div data-item data-type="free">free</div>
+                                <div data-item data-type="free">free</div>
+                                <div data-item data-type="free">free</div>
+                            </div>
+                        </div>
+
+                        <div class="cap-header" style="margin-top: 2em; margin-bottom: 1em;">Filter (Multi) - Not additive</div>
+                        <div data-widget="sifter">
+                            <div data-controls data-widget="toggle" data-max-active="3" data-allow-empty="false" data-has-default="true">
+                                <a href="#" data-widget="switch" data-type="all" data-default="true" data-active="true">All</a>
+                                <a href="#" data-widget="switch" data-type="luxury">Luxury</a>
+                                <a href="#" data-widget="switch" data-type="onmountain">On Mountain</a>
+                                <a href="#" data-widget="switch" data-type="adventure">Adventure</a>
+                                <a href="#" data-widget="switch" data-type="kids">Kids</a>
+                                <a href="#" data-widget="switch" data-type="valley">Valley</a>
+                                <a href="#" data-widget="switch" data-type="free">Free</a>
+                                <a href="#" data-widget="switch" data-type="family">Family Certified</a>
+                            </div>
+                            <div data-content>
+                                <div data-item data-type="luxury kids">luxury kids</div>
+                                <div data-item data-type="luxury">luxury</div>
+                                <div data-item data-type="kids">kids</div>
+                                <div data-item data-type="valley">valley</div>
+                                <div data-item data-type="free">free</div>
+                                <div data-item data-type="free">free</div>
+                                <div data-item data-type="free">free</div>
+                            </div>
+                        </div>
+
+                        <div class="cap-header" style="margin-top: 2em; margin-bottom: 1em;">Filter (Multi) - Additive</div>
+                        <div data-widget="sifter" data-additive="true">
+                            <div data-controls data-widget="toggle" data-max-active="3" data-allow-empty="false" data-has-default="true">
+                                <a href="#" data-widget="switch" data-type="all" data-default="true" data-active="true">All</a>
+                                <a href="#" data-widget="switch" data-type="luxury">Luxury</a>
+                                <a href="#" data-widget="switch" data-type="onmountain">On Mountain</a>
+                                <a href="#" data-widget="switch" data-type="adventure">Adventure</a>
+                                <a href="#" data-widget="switch" data-type="kids">Kids</a>
+                                <a href="#" data-widget="switch" data-type="valley">Valley</a>
+                                <a href="#" data-widget="switch" data-type="free">Free</a>
+                                <a href="#" data-widget="switch" data-type="family">Family Certified</a>
+                            </div>
+                            <div data-content>
+                                <div data-item data-type="luxury kids">luxury kids</div>
+                                <div data-item data-type="luxury">luxury</div>
+                                <div data-item data-type="kids">kids</div>
+                                <div data-item data-type="valley">valley</div>
+                                <div data-item data-type="free">free</div>
+                                <div data-item data-type="free">free</div>
+                                <div data-item data-type="free">free</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cap-header style-code-header">Code</div>
+                <hr />
+                <pre class="style-code">
+&lt;div data-widget="sifter"&gt;
+    &lt;div data-controls data-widget="toggle" data-max-active="2" data-allow-empty="false" data-has-default="true"&gt;
+        &lt;a href="#" data-widget="switch" data-type="all" data-default="true" data-active="true"&gt;All&lt;/a&gt;
+        &lt;a href="#" data-widget="switch" data-type="type1"&gt;Type1&lt;/a&gt;
+        &lt;a href="#" data-widget="switch" data-type="type2"&gt;Type2&lt;/a&gt;
+        &lt;a href="#" data-widget="switch" data-type="type3"&gt;Type3&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div data-content&gt;
+        &lt;div data-item data-type="type1"&gt;Type1 Only&lt;/div&gt;
+        &lt;div data-item data-type="type2"&gt;Type2 Only&lt;/div&gt;
+        &lt;div data-item data-type="type1 type2"&gt;Type1 + Type2&lt;/div&gt;
+        &lt;div data-item data-type="type3"&gt;Type3 Only&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                <div class="cap-header">Events</div>
+                <hr />
+                <div class="row">
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Emits</div>
+                        <ul>
+                            <li>
+                                <strong>sifter:has-filtered</strong><br />The sifter has successfully filtered results.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="small-12 large-6 columns">
+                        <div class="cap-header">Listens For</div>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div id="templates">
+        <div id="modal">
+            <div class="modal">
+                <a href="#" class="modal-close">Close</a>
+                <div class="modal-content" data-content></div>
+                <div class="dim"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="scripts">
+        <script src="assets/js/lib/lodash.min.js" defer></script>
+        <script src="assets/js/lib/jquery.min.js" defer></script>
+        <script src="assets/js/lib/jquery-ui.min.js" defer></script>
+        <script src="assets/js/lib/walt.js" defer></script>
+
+        <script src="../base.js" defer></script>
+        <script src="../factory.js" defer></script>
+
+        <script src="assets/js/widgets/switch.js" defer></script>
+        <script src="assets/js/widgets/toggle.js" defer></script>
+        <script src="assets/js/widgets/accordion.js" defer></script>
+        <script src="assets/js/widgets/tabs.js" defer></script>
+        <script src="assets/js/widgets/dropdown.js" defer></script>
+        <script src="assets/js/widgets/input.js" defer></script>
+        <script src="assets/js/widgets/digits.js" defer></script>
+        <script src="assets/js/widgets/sticky.js" defer></script>
+        <script src="assets/js/widgets/modal.js" defer></script>
+        <script src="assets/js/widgets/carousel.js" defer></script>
+        <script src="assets/js/widgets/carousel-fluid.js" defer></script>
+        <script src="assets/js/widgets/carousel-fixed.js" defer></script>
+        <script src="assets/js/widgets/sifter.js" defer></script>
+
+        <script src="assets/js/main.js" defer></script>
+    </div>
+</body>
+</html>

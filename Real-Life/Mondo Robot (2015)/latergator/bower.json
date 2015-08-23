@@ -1,0 +1,27 @@
+{
+  "name": "latergator",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mondorobot/latergator",
+  "authors": [
+    "Andy Mikulski <andy@mondorobot.com>"
+  ],
+  "description": "String-based deferred/lazy loader",
+  "main": "gator.js",
+  "keywords": [
+    "mondorobot",
+    "mondo",
+    "robot",
+    "latergator",
+    "later",
+    "gator",
+    "lazyload",
+    "lazy",
+    "deferred",
+    "load"
+  ],
+  "ignore": "",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
