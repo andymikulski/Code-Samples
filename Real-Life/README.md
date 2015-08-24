@@ -2,7 +2,7 @@ Andy Mikulski Sample Code
 Work/Real-Life Projects
 ===
 
-Here you can find samples I've produced while working full-time for [http://www.firstborn.com/](Firstborn) and [http://www.mondorobot.com/](Mondo Robot). Each directory will have its own README to provide information for each sample.
+Here you can find samples I've produced while working full-time for [firstborn](http://www.firstborn.com/) and [Mondo Robot](http://www.mondorobot.com/). Each directory will have its own README to provide information for each sample.
 
 ## Firstborn
 The `Firstborn` directory contains snippets of [http://www.firstborn.com/](firstborn.com), which I solely developed the front end using TypeScript.

@@ -2,13 +2,13 @@ Andy Mikulski Sample Code
 Mondo Robot samples
 ===
 
-Here you can find samples I've produced while working full-time for [http://www.mondorobot.com/](Mondo Robot) in Boulder, CO.
+Here you can find samples I've produced while working full-time for [Mondo Robot](http://www.mondorobot.com/) in Boulder, CO.
 
 ## Gretzky
 
 A jQuery UI-based widget framework, complete with sample components you too could make with gretzky.js! Due to client needs, we were required to work within certain technical bounds. Gretzky was developed to leverage good stuff from $.ui while maintaining our sanity when building a complex, multi-component application.
 
-## LaterGator
+## LaterGatorf
 
 This is a fun one! String-based deferred/lazy loader, for when you need to lazy load a page but can't/don't want to change the markup coming from the server. It's a little smelly, but it's an interesting concept to explore!
 

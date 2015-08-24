@@ -48,7 +48,7 @@ $.widget('mondo.*YourWidgetNameHere*', $.mondo.base, { ...`
 ```
 
 
-4) Call `window.WidgetFactory.refresh()` to instantiate/refresh widgets
+Call `window.WidgetFactory.refresh()` to instantiate/refresh widgets
 
 ### Dependencies
 - jQuery

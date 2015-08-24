@@ -10,13 +10,13 @@ Team: 2 developers (myself on front end, and Ziad Hilal on back end)
 Tech: TypeScript, Laravel, Sass, RequireJS
 Responsibilities: Front-end dev (mobile, desktop), QA (IE8+, Mobile), analytics implementation
 
-After having the same flash-based website for about seven years, digital ad agency [http://www.firstborn.com/](Firstborn) decided it was time to move on and enlisted their best developers to execute the designs.
+After having the same flash-based website for about seven years, digital ad agency [firstborn](http://www.firstborn.com/) decided it was time to move on and enlisted their best developers to execute the designs.
 
-With myself on front end and [https://www.linkedin.com/profile/view?id=224257185](Ziad Hilal) on back end, we developed the site in about five months. This time included execution of designs, execution of re-designs, content creation, and QA.
+With myself on front end and [Ziad Hilal](https://www.linkedin.com/profile/view?id=224257185) on back end, we developed the site in about five months. This time included execution of designs, execution of re-designs, content creation, and QA.
 
 ## About the Tech
 
-Understanding the potential longevity of the site, I knew that creating a clean, maintainable codebase was integral. With that in mind, I chose to use [http://www.typescriptlang.org/](TypeScript) on the front end. TypeScript affords features such as structure, strict-ish typing, and error checking. These aid in maintaining code quality, even if code is modified by multiple developers.
+Understanding the potential longevity of the site, I knew that creating a clean, maintainable codebase was integral. With that in mind, I chose to use [TypeScript](http://www.typescriptlang.org/) on the front end. TypeScript affords features such as structure, strict-ish typing, and error checking. These aid in maintaining code quality, even if code is modified by multiple developers.
 
 Beyond its safe coding features, TS allowed easy creation and extension of multiple classes, breaking down functionality into sensible modules. By compartmentalizing several commonly used functions/features and refining them through iteration, ultimately a small framework covering everything from debug logging to DOM animation was created.
 
