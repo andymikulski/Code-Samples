@@ -1,5 +1,5 @@
 /**!
- * LaterGator by Mondo Robot
+ * LaterGator by Andy Mikulski (for Mondo Robot)
  * String-based deferred/lazy loader
  */
 
