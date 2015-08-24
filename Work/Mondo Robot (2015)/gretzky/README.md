@@ -4,7 +4,7 @@
 ##### aka thewhitetornado.js
 ###### aka waynedouglasgretzky.js
 
-![Gretzky Face](/images/gretzky.png?raw=true)
+![Gretzky Face](images/gretzky.png?raw=true)
 
 ---
 
